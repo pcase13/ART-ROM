@@ -11,6 +11,7 @@ This file can be imported to run:
 """
 
 import numpy as np
+from .config import water_ior_data
 
 def ior_water(wavelengths):
     """Calculates the index of refraction of water at a given wavelength.
@@ -30,7 +31,7 @@ def ior_water(wavelengths):
     iors : array-like
         indices of refraction at given wavelengths
     """
-    data = np.genfromtxt('data/Daimon-20.0C.csv', delimiter=',', skip_header=1)
+    data = np.genfromtxt(water_ior_data, delimiter=',', skip_header=1)
     data[:,0] = 1e3 * data[:,0]
     iors = np.interp(wavelengths, data[:,0], data[:,1])
     return iors

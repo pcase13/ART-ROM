@@ -1,10 +1,10 @@
 import miepython
 import matplotlib.pyplot as plt
-from wavelength_to_rgb import intensities_to_rgb
-from solar import solar_spectrum
-from progress_bar import progress_bar
-from index_of_refraction import ior_water
 import numpy as np
+from artrom.color import intensities_to_rgb
+from artrom.solar import solar_spectrum
+from artrom.progressbar import progress_bar
+from artrom.ior import ior_water
 plt.style.use('dark_background')
 
 # Microphysical properties

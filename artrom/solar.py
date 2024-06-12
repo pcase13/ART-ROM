@@ -8,6 +8,7 @@ This file can be imported to run:
     * solar_spectrum - calculates solar irradiance.
 """
 import numpy as np
+from .config import solar_irradiance_data
 
 def solar_spectrum(scale=1):
     """Calculate solar irradiance after passing through the atmosphere.
@@ -27,7 +28,7 @@ def solar_spectrum(scale=1):
     irradiances : array-like
         irradiance at given wavelengths (W m-2 nm-1)
     """
-    data = np.genfromtxt('data/AM0AM1_5.csv', delimiter=',')
+    data = np.genfromtxt(solar_irradiance_data, delimiter=',')
     wavelengths = data[:,0]
     irradiances = data[:,3]
     return wavelengths, irradiances

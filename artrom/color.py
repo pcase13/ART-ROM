@@ -13,6 +13,7 @@ This file can be imported to run:
                   intensities at given wavelengths.
 """
 import numpy as np
+from .config import color_weight_data
 
 def wavelength_to_rgb(wavelength, intensity=0.5, option='bruton'):
     """Calculates the RGB values for a given wavelength
@@ -99,7 +100,8 @@ def intensities_to_rgb(wavelengths, intensities, norm=50, option='stockman_sharp
         array of (r, g, b) values from 0 to 1
     """
     if option == 'stockman_sharpe':
-        data = np.genfromtxt('data/lin2012xyz2e_1_7sf.csv', delimiter=',')
+        #data = np.genfromtxt('data/lin2012xyz2e_1_7sf.csv', delimiter=',')
+        data = np.genfromtxt(color_weight_data, delimiter=',')
         data[data == -99.] = np.nan
         data_x = np.interp(wavelengths, data[:,0], data[:,1])
         data_y = np.interp(wavelengths, data[:,0], data[:,2])
