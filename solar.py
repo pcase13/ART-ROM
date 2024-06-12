@@ -1,6 +1,32 @@
+"""Solar radiation library
+
+This module provides properties of the sun.
+
+The file can also be run to plot the solar irradiance spectrum.
+
+This file can be imported to run:
+    * solar_spectrum - calculates solar irradiance.
+"""
 import numpy as np
 
 def solar_spectrum(scale=1):
+    """Calculate solar irradiance after passing through the atmosphere.
+
+    This function works for visible wavelengths and is based on:
+    https://www.pveducation.org/pvcdrom/appendices/standard-solar-spectra
+
+    Parameters
+    ----------
+    scale : float, optional
+        amount to scale solar irradiance by
+
+    Returns
+    ------
+    wavelengths : array-like
+        wavelengths at which irradiances are given (nm)
+    irradiances : array-like
+        irradiance at given wavelengths (W m-2 nm-1)
+    """
     data = np.genfromtxt('data/AM0AM1_5.csv', delimiter=',')
     wavelengths = data[:,0]
     irradiances = data[:,3]

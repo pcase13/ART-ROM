@@ -1,7 +1,27 @@
+"""Progress bar
+
+This module allows for a progress bar to be displayed for loops.
+
+This file can be imported to run:
+    * progress_bar - loops over iterable and displays progress.
+"""
 import sys
 import time
 
-def progress_bar(it, prefix="", size=60, out=sys.stdout): # Python3.6+
+def progress_bar(it, prefix="", size=60, out=sys.stdout):
+    """Loops over iterable and displays progress.
+
+    Parameters
+    ----------
+    it : iterable, required
+        iterable to loop over
+    prefix: str, optional
+        string to display before progress bar.
+    size: int, optional
+        length of progress bar
+    out: int, optional
+        where to print!
+    """
     count = len(it)
     start = time.time() # time estimate start
     def show(j):
