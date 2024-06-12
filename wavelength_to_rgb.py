@@ -1,6 +1,41 @@
+"""Color-from-wavelength library
+
+This module calculates RGB values for given wavelength or relative
+intensities at various wavelengths.
+
+It can also be run to plot a comparison of various ways of 
+representing a rainbow.
+
+This file can be imported to run:
+    * wavelength_to_rgb - calculate RGB values for monochromatic
+                  wavelength.
+    * intensities_to_rgb - calculate RGB values for given relative
+                  intensities at given wavelengths.
+"""
 import numpy as np
 
 def wavelength_to_rgb(wavelength, intensity=0.5, option='bruton'):
+    """Calculates the RGB values for a given wavelength
+
+    Implemented techniques:
+    - Bruton
+
+    Parameters
+    ----------
+    wavelength : float, required
+        wavelength at which to calculate color
+
+    Returns
+    ------
+    R : float
+        Red value between 0 and 1
+    G : float
+        Green value between 0 and 1
+    B : float
+        Blue value between 0 and 1
+    """
+
+
     if option == 'bruton':
         '''
         Based on code by Dan Bruton
@@ -45,6 +80,24 @@ def wavelength_to_rgb(wavelength, intensity=0.5, option='bruton'):
         raise NameError
 
 def intensities_to_rgb(wavelengths, intensities, norm=50, option='stockman_sharpe'):
+    """Calculates the RGB values for a given set of intensities at specified wavelengths.
+
+    Parameters
+    ----------
+    wavelengths : array-like, required
+        wavelengths for given intensities 
+    intesnities : array-like, required
+        relative intensities at given wavelengths
+    norm : float, optional
+        normalization value
+    option : string, optional
+        which method
+
+    Returns
+    ------
+    rgb : array-like
+        array of (r, g, b) values from 0 to 1
+    """
     if option == 'stockman_sharpe':
         data = np.genfromtxt('data/lin2012xyz2e_1_7sf.csv', delimiter=',')
         data[data == -99.] = np.nan

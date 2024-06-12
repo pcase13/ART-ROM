@@ -32,7 +32,7 @@ for i in progress_bar(range(radii.shape[0]), "Scattering: ", 40):
 scat = scat * irradiances
 
 # Find normalizing maximum
-maximum = np.max(np.sum(scat, axis=1))*2
+maximum = np.max(np.sum(scat, axis=1))
 
 # Colorize
 rgb = np.zeros((radii.shape[0], mu.shape[0], 3))
@@ -44,11 +44,10 @@ for i in progress_bar(range(radii.shape[0]), "Coloring: ", 40):
 rgb /= np.max(rgb)
 
 # Plot
-plt.imshow(rgb, aspect='auto')
-plt.gca().set_xticks(range(len(theta[::100])))
-plt.gca().set_yticks(range(len(radii[::10])))
-plt.gca().set_xticklabels(theta[::100])
-plt.gca().set_yticklabels(radii[::10]/1e3)
+fig = plt.figure(figsize=(10,7))
+plt.imshow(rgb, aspect='auto', extent=[theta[0], theta[-1], 2, 0])
+plt.gca().set_yticks((2,1,0))
+plt.gca().set_yticklabels((1000,100,10))
 plt.xlabel('Scattering angle ($degrees$)')
 plt.ylabel('Radius ($\mu m$)')
 plt.savefig('plots/lee_diagram.png')
