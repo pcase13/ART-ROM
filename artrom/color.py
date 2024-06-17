@@ -13,7 +13,7 @@ This file can be imported to run:
                   intensities at given wavelengths.
 """
 import numpy as np
-from .config import color_weight_data
+from config import color_weight_data
 
 def wavelength_to_rgb(wavelength, intensity=0.5, option='bruton'):
     """Calculates the RGB values for a given wavelength

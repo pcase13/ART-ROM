@@ -11,7 +11,7 @@ This file can be imported to run:
 """
 
 import numpy as np
-from .config import water_ior_data
+from config import water_ior_data
 
 def ior_water(wavelengths):
     """Calculates the index of refraction of water at a given wavelength.
